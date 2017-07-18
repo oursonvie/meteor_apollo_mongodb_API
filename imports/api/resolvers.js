@@ -5,7 +5,13 @@ import { GetMachineExam, GetStudentFile } from '/imports/data/openAPI'
 
 export const resolvers = {
   Query: {
-    hello(root, args, contect) {
+    test(root, args, context) {
+      return JSON.stringify({
+        context: context,
+        args: args
+      })
+    },
+    hello(root, args, context) {
       return "hello world!"
     },
     async currentUser(root, args, context) {
@@ -17,7 +23,6 @@ export const resolvers = {
         };
       }
       return null
-
     },
     OpenID: (root, {id}) => {
       return Students.find({CERTIFICATENO:id}).fetch()

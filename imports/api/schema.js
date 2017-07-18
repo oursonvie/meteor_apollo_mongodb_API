@@ -1,5 +1,6 @@
 export const typeDefs = `
 type Query {
+  test: String
   hello: String
   currentUser: CurrentUser
   OpenID(id: String): [OpenStudent]
