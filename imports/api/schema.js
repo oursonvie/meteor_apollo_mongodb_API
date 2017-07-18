@@ -1,6 +1,7 @@
 export const typeDefs = `
 type Query {
   hello: String
+  currentUser: CurrentUser
   OpenID(id: String): [OpenStudent]
   OpenOne: OpenStudent
   XueliBatch(batchcode: Int): [XueliStudent]
@@ -9,6 +10,41 @@ type Query {
   GetStudentFile(id: String, batchcode: Int): String
 }
 
+type CurrentUser {
+  string: String
+  userInfo: UserInfo
+}
+
+type UserInfo {
+  _id: String
+  createdAt: String
+  services: Password
+  emails: [Emails]
+  profile: String
+}
+
+type Password {
+  password: Bcrypt
+  resume: LoginTokens
+}
+
+type Bcrypt {
+  bcrypt: String
+}
+
+type LoginTokens {
+  loginTokens: [loginToken]
+}
+
+type loginToken {
+  when: String
+  hashedToken: String
+}
+
+type Emails {
+  address: String
+  verified: Boolean
+}
 
 type XueliStudent {
   _id: String
@@ -34,18 +70,49 @@ type OpenStudent {
   MOBILEPHONE: String
   EMAIL: String
   RECRUITBATCHNAME: Int
-  StudentFile: OpenAPI
-  MachineExam: OpenAPI
+  StudentFile: OpenAPIStudentFile
+  MachineExam: OpenAPIMachineExam
 }
 
-type OpenAPI {
+type OpenAPIStudentFile {
   state: String
-  data: Data
+  data: StudentFileData
 }
 
-type Data {
+type OpenAPIMachineExam {
+  state: String
+  data: MachineExamData
+}
+
+type StudentFileData {
   count: Int
-  dataList: [String]
+  dataList: [StudentFileObj]
+}
+
+type MachineExamData {
+  count: Int
+  dataList: [MachineExamObj]
+}
+
+type StudentFileObj {
+  batchcode: String
+  studentcode: String
+  certificateno: String
+  filetype: String
+  doccontent: String
+  filesize: String
+  lastdate: String
+  filename: String
+}
+
+type MachineExamObj {
+  BATCHCODE: String
+  STUDENTCODE: String
+  REALNAME: String
+  CERTIFICATENO: String
+  SUBJECTNAME: String
+  SCORE: Int
+  EXAMTIME: String
 }
 
 `;

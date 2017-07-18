@@ -8,6 +8,7 @@
     "apollo-client": "^1.8.0",
     "async": "^2.5.0",
     "babel-runtime": "^6.20.0",
+    "bcrypt": "^1.0.2",
     "body-parser": "^1.17.2",
     "cu8-sequelize-oracle": "^1.0.5",
     "express": "^4.15.3",

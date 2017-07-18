@@ -24,3 +24,6 @@ http
 deanius:promise
 session
 apollo
+accounts-password
+accounts-ui
+meteortoys:allthings

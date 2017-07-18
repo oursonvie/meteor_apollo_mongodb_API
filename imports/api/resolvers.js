@@ -5,8 +5,19 @@ import { GetMachineExam, GetStudentFile } from '/imports/data/openAPI'
 
 export const resolvers = {
   Query: {
-    hello(root, args, context) {
-      return 'hello world';
+    hello(root, args, contect) {
+      return "hello world!"
+    },
+    async currentUser(root, args, context) {
+      if (context.userId) {
+        // console.log(Meteor.users.findOne(context.userId))
+        return {
+          string: 'hello world',
+          userInfo: await Meteor.users.findOne(context.userId)
+        };
+      }
+      return null
+
     },
     OpenID: (root, {id}) => {
       return Students.find({CERTIFICATENO:id}).fetch()

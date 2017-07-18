@@ -1,4 +1,4 @@
-const appKey = '0267B15D11764864AA517BB791D8B30D'
+const appKey = '543DE0821C0F607EE0533412640A033E'
 
 // md5 for open auth
 const EncryptAuthorInformation = () => {
@@ -28,7 +28,7 @@ httpGetAsync = (url, options) =>
 // query student exam result
 export const GetMachineExam = (batchcode, certificateno) => {
 
-  let url = `http://apitest.openonline.com.cn/api/MachineExam/GetMachineExam?appKey=${appKey} &batchcode=${batchcode}&certificateno=${certificateno}`
+  let url = `http://openapi.open.com.cn/api/MachineExam/GetMachineExam?appKey=${appKey}&batchcode=${batchcode}&certificateno=${certificateno}`
 
   try {
     const result = Promise.await(httpGetAsync(
@@ -36,9 +36,9 @@ export const GetMachineExam = (batchcode, certificateno) => {
       {headers: { key: EncryptAuthorInformation()}}
     ))
 
-    console.log(result.data)
+    // console.log(result.data)
 
-    return result.data
+    return JSON.parse(result.data)
 
   } catch (err) {
 
@@ -51,7 +51,7 @@ export const GetMachineExam = (batchcode, certificateno) => {
 // query student exam result
 export const GetStudentFile = (batchcode, certificateno) => {
 
-  let url = `http://apitest.openonline.com.cn/api/GetStudentFile/GetStudentFileInfo?appKey=${appKey}&batchCode=${batchcode}&certificateNo=${certificateno}`
+  let url = `http://openapi.open.com.cn/api/GetStudentFile/GetStudentFileInfo?appKey=${appKey}&batchCode=${batchcode}&certificateNo=${certificateno}`
 
   try {
     const result = Promise.await(httpGetAsync(
@@ -59,7 +59,7 @@ export const GetStudentFile = (batchcode, certificateno) => {
       {headers: { key: EncryptAuthorInformation()}}
     ))
 
-    console.log(result.data)
+    // console.log(result.data)
 
     return result.data
 
